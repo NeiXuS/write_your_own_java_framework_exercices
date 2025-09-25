@@ -21,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class InterceptorRegistryTest {
-  /*
+
   @Nested
   public class Q1 {
 
@@ -134,49 +134,49 @@ public class InterceptorRegistryTest {
     @Retention(RUNTIME)
     @Target(METHOD)
     @interface Tagged2 { }
+/*
+    @Test @Tag("Q2")
+    public void findAdvices() throws NoSuchMethodException {
+      class EmptyAroundAdvice implements AroundAdvice {
+        @Override
+        public void before(Object instance, Method method, Object[] args) {}
+        @Override
+        public void after(Object instance, Method method, Object[] args, Object result) {}
+      }
 
-//    @Test @Tag("Q2")
-//    public void findAdvices() throws NoSuchMethodException {
-//      class EmptyAroundAdvice implements AroundAdvice {
-//        @Override
-//        public void before(Object instance, Method method, Object[] args) {}
-//        @Override
-//        public void after(Object instance, Method method, Object[] args, Object result) {}
-//      }
-//
-//      var registry = new InterceptorRegistry();
-//      var advice1 = new EmptyAroundAdvice();
-//      var advice2 = new EmptyAroundAdvice();
-//      var advice3 = new EmptyAroundAdvice();
-//      registry.addAroundAdvice(Tagged1.class, advice1);
-//      registry.addAroundAdvice(Tagged1.class, advice2);
-//      registry.addAroundAdvice(Tagged2.class, advice3);
-//
-//      interface Foo {
-//        void method0();
-//
-//        @Tagged1
-//        void method1();
-//
-//        @Tagged2
-//        void method2();
-//
-//        @Tagged1 @Tagged2
-//        void method3();
-//      }
-//
-//      var method0 = Foo.class.getMethod("method0");
-//      var method1 = Foo.class.getMethod("method1");
-//      var method2 = Foo.class.getMethod("method2");
-//      var method3 = Foo.class.getMethod("method3");
-//      assertAll(
-//          () -> assertEquals(List.of(), registry.findAdvices(method0)),
-//          () -> assertEquals(List.of(advice1, advice2), registry.findAdvices(method1)),
-//          () -> assertEquals(List.of(advice3), registry.findAdvices(method2)),
-//          () -> assertEquals(List.of(advice1, advice2, advice3), registry.findAdvices(method3))
-//      );
-//    }
+      var registry = new InterceptorRegistry();
+      var advice1 = new EmptyAroundAdvice();
+      var advice2 = new EmptyAroundAdvice();
+      var advice3 = new EmptyAroundAdvice();
+      registry.addAroundAdvice(Tagged1.class, advice1);
+      registry.addAroundAdvice(Tagged1.class, advice2);
+      registry.addAroundAdvice(Tagged2.class, advice3);
 
+      interface Foo {
+        void method0();
+
+        @Tagged1
+        void method1();
+
+        @Tagged2
+        void method2();
+
+        @Tagged1 @Tagged2
+        void method3();
+      }
+
+      var method0 = Foo.class.getMethod("method0");
+      var method1 = Foo.class.getMethod("method1");
+      var method2 = Foo.class.getMethod("method2");
+      var method3 = Foo.class.getMethod("method3");
+      assertAll(
+          () -> assertEquals(List.of(), registry.findAdvices(method0)),
+          () -> assertEquals(List.of(advice1, advice2), registry.findAdvices(method1)),
+          () -> assertEquals(List.of(advice3), registry.findAdvices(method2)),
+          () -> assertEquals(List.of(advice1, advice2, advice3), registry.findAdvices(method3))
+      );
+    }
+*/
     @Test @Tag("Q2")
     public void withTwoAdvices() {
       record ModifyParameterAroundAdvice(int index, Object value) implements AroundAdvice {
@@ -337,7 +337,7 @@ public class InterceptorRegistryTest {
     }
   }  // end of Q4
 
-
+/*
   @Nested
   public class Q5 {
     @Retention(RUNTIME)
